@@ -1,5 +1,6 @@
 <?php
 
+
 Route::group(['middleware' => 'auth:api', 'prefix' => 'api/user', 'namespace' => 'Modules\User\Http\Controllers'], function()
 {
     /*Show login user data*/
