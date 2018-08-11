@@ -24,9 +24,9 @@ class CarouselDatabaseSeeder extends Seeder
         $faker = Faker::create();
         foreach (range(1,10) as $index) {
             DB::table('carousels')->insert([
-                'user_id' => $faker->numberBetween(1,3),
-                'name' => $faker->text,
-                'alt' => $faker->text,
+                'user_id' => 1,
+                'name' => $faker->text(20),
+                'alt' => $faker->text(20),
                 'position' => $faker->numberBetween(1,5),
                 'active' => $faker->boolean
             ]);

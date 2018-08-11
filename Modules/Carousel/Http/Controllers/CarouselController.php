@@ -51,6 +51,10 @@ class CarouselController extends Controller
         return $presenter;
     }
 
+    /**
+     * @param Request $request
+     * @return CarouselPresenter
+     */
     public function store(Request $request)
     {
         /** @var User $auth_user */
@@ -72,6 +76,11 @@ class CarouselController extends Controller
         return $presenter;
     }
 
+    /**
+     * @param Request $request
+     * @param int $carousel_id
+     * @return CarouselPresenter
+     */
     public function update(Request $request, int $carousel_id)
     {
         /** @var User $auth_user */
@@ -94,4 +103,35 @@ class CarouselController extends Controller
         return $presenter;
     }
 
+    public function updateCollection(Request $request)
+    {
+        $carousels = [];
+        foreach ($request->carousels as $carousel) {
+            array_push($carousels, $carousel['id']);
+        }
+        /** @var User $auth_user */
+        $auth_user = Auth::id();
+
+        $carouselsCollection = Carousel::select(['*'])
+            ->where('user_id', '=', $auth_user)
+            ->findOrFail($carousels);
+
+        foreach ($carouselsCollection as $index => $carousel) {
+            $status = $carousel->fill([
+                'name' => $request->carousels[$index]['name'],
+                'alt' => $request->carousels[$index]['alt'],
+                'active' => $request->carousels[$index]['active'],
+                'position' => $request->carousels[$index]['position'],
+            ])->save();
+        }
+
+        $carouselsCollection = Carousel::select(['*'])
+            ->where('user_id', '=', $auth_user)
+            ->findOrFail($carousels);
+
+
+        $presenter = new CarouselsListPresenter($carouselsCollection);
+
+        return $presenter;
+    }
 }

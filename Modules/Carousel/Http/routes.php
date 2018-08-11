@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'auth:api', 'prefix' => 'api/carousel', 'namespace' => 'Modules\Carousel\Http\Controllers'], function()
+Route::group(['middleware' => 'CORS', 'prefix' => 'api/carousel', 'namespace' => 'Modules\Carousel\Http\Controllers'], function()
 {
     Route::get('/{carousel_id}', 'CarouselController@show');
 
@@ -9,4 +9,6 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'api/carousel', 'namespace
     Route::post('/', 'CarouselController@store');
 
     Route::put('/{carousel_id}', 'CarouselController@update');
+
+    Route::put('/', 'CarouselController@updateCollection');
 });
