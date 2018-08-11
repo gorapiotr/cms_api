@@ -13,10 +13,21 @@ class CreateCarouselsTable extends Migration
      */
     public function up()
     {
+
+        Schema::create('carousel_groups', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
+        });
+
         Schema::create('carousels', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('carousel_group_id')->unsigned()->index();
+            $table->foreign('carousel_group_id')->references('id')->on('carousel_groups')->onDelete('cascade');
             $table->string('name');
             $table->string('alt');
             $table->integer('position');
@@ -33,5 +44,6 @@ class CreateCarouselsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('carousels');
+        Schema::dropIfExists('carousel_group');
     }
 }

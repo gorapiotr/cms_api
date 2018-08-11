@@ -7,7 +7,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Modules\Carousel\Model\Carousel;
 use Modules\Carousel\Presenters\CarouselPresenter;
-use Modules\Carousel\Presenters\CarouselsListPresenter;
+use Modules\Carousel\Presenters\CarouselsCollectionPresenter;
 use Modules\User\Model\User;
 
 class CarouselController extends Controller
@@ -19,7 +19,7 @@ class CarouselController extends Controller
 
 
     /**
-     * @return CarouselsListPresenter
+     * @return CarouselsCollectionPresenter
      */
     public function index()
     {
@@ -29,7 +29,7 @@ class CarouselController extends Controller
 
         /** @var  $carouselCollection */
         $carouselCollection = Carousel::all();
-        $presenter = new CarouselsListPresenter($carouselCollection);
+        $presenter = new CarouselsCollectionPresenter($carouselCollection);
 
         return $presenter;
     }
@@ -130,7 +130,7 @@ class CarouselController extends Controller
             ->findOrFail($carousels);
 
 
-        $presenter = new CarouselsListPresenter($carouselsCollection);
+        $presenter = new CarouselsCollectionPresenter($carouselsCollection);
 
         return $presenter;
     }

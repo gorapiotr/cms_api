@@ -27,4 +27,9 @@ class Carousel extends Model
         'position'
     ];
 
+    public function carouselGroup()
+    {
+        return $this->belongsTo(CarouselGroup::class);
+    }
+
 }

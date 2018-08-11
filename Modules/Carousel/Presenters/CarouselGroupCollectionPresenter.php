@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: piotrgora
- * Date: 09.08.2018
- * Time: 07:38
+ * Date: 11.08.2018
+ * Time: 10:03
  */
 
 namespace Modules\Carousel\Presenters;
@@ -11,7 +11,7 @@ namespace Modules\Carousel\Presenters;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class CarouselsListPresenter extends ResourceCollection
+class CarouselGroupCollectionPresenter extends ResourceCollection
 {
     /**
      * @param \Illuminate\Http\Request $request
@@ -21,7 +21,7 @@ class CarouselsListPresenter extends ResourceCollection
     public function toArray($request): array
     {
 
-        $return['data'] = CarouselPresenter::collection($this->collection);
+        $return['data'] = CarouselGroupPresenter::collection($this->collection);
 
         return $return;
     }

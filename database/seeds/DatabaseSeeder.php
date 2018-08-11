@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             Modules\User\Database\Seeders\UserDatabaseSeeder::class,
+            Modules\Carousel\Database\Seeders\CarouselGroupDatabaseSeeder::class,
             Modules\Carousel\Database\Seeders\CarouselDatabaseSeeder::class
         ]);
     }
