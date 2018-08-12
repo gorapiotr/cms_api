@@ -8,7 +8,7 @@ Route::group(['middleware' => 'CORS', 'prefix' => 'api/carousel', 'namespace' =>
     Route::get('/', 'CarouselController@index');
     Route::post('/', 'CarouselController@store');
     Route::put('/{carousel_id}', 'CarouselController@update');
-    Route::put('/', 'CarouselController@updateCollection');
+
 
 
 });
@@ -17,7 +17,8 @@ Route::group(['middleware' => 'CORS', 'prefix' => 'api/carousel-group', 'namespa
 {
     /* Carousel group */
     Route::get('/', 'CarouselGroupController@index');
-
+    Route::get('/{carousel_group_id}', 'CarouselGroupController@show');
+    Route::put('/{carousel_group_id}', 'CarouselGroupController@update');
 
 });
 

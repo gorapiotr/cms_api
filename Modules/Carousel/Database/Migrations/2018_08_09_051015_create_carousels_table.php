@@ -26,13 +26,21 @@ class CreateCarouselsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('carousel_group_id')->unsigned()->index();
-            $table->foreign('carousel_group_id')->references('id')->on('carousel_groups')->onDelete('cascade');
+//            $table->integer('carousel_group_id')->unsigned()->index();
+//            $table->foreign('carousel_group_id')->references('id')->on('carousel_groups')->onDelete('cascade');
             $table->string('name');
             $table->string('alt');
             $table->integer('position');
-            $table->boolean('active')->default(true);
             $table->timestamps();
+        });
+
+        Schema::create('carousel_carousel_group', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('carousel_id')->unsigned()->index();
+            $table->foreign('carousel_id')->references('id')->on('carousels')->onDelete('cascade');
+            $table->integer('carousel_group_id')->unsigned()->index();
+            $table->foreign('carousel_group_id')->references('id')->on('carousel_groups')->onDelete('cascade');
+            $table->boolean('active')->default(true);
         });
     }
 

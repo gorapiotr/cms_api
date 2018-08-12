@@ -17,7 +17,10 @@ class CarouselGroup extends Model
 
     public function carousels()
     {
-        return $this->hasMany(Carousel::class);
+        return $this->belongsToMany(
+            Carousel::class,
+            'carousel_carousel_group'
+        )->withPivot('active');
     }
 
 }

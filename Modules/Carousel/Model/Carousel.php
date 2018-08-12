@@ -27,9 +27,12 @@ class Carousel extends Model
         'position'
     ];
 
-    public function carouselGroup()
+    public function carouselGroups()
     {
-        return $this->belongsTo(CarouselGroup::class);
+        return $this->belongsToMany(
+            CarouselGroup::class,
+            'carousel_carousel_group'
+        )->withPivot('active');
     }
 
 }

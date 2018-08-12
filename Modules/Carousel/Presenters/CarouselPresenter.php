@@ -24,9 +24,12 @@ class CarouselPresenter extends Resource
             'user_id' => $this->user_id,
             'name' => $this->name,
             'alt' => $this->alt,
-            'active' => $this->active,
             'position' => $this->position
         ];
+
+        if (isset($this->pivot->active)) {
+            $return['active'] = $this->pivot->active;
+        }
         return $return;
     }
 }

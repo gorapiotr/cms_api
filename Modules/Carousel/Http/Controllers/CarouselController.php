@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Modules\Carousel\Model\Carousel;
+use Modules\Carousel\Model\CarouselGroup;
 use Modules\Carousel\Presenters\CarouselPresenter;
 use Modules\Carousel\Presenters\CarouselsCollectionPresenter;
 use Modules\User\Model\User;
@@ -30,7 +31,7 @@ class CarouselController extends Controller
         /** @var  $carouselCollection */
         $carouselCollection = Carousel::all();
         $presenter = new CarouselsCollectionPresenter($carouselCollection);
-
+        $presenter->additional(['success' => true]);
         return $presenter;
     }
 
@@ -45,9 +46,10 @@ class CarouselController extends Controller
          */
 
         /** @var  $carousel */
-        $carousel = Carousel::findOrFail($carousel_id)->first();
-        $presenter = new CarouselPresenter($carousel);
+        $carousel = Carousel::findOrFail($carousel_id);
 
+        $presenter = new CarouselPresenter($carousel);
+        $presenter->additional(['success' => true]);
         return $presenter;
     }
 
@@ -57,6 +59,10 @@ class CarouselController extends Controller
      */
     public function store(Request $request)
     {
+        /** todo
+         * add to pivot table!
+         */
+
         /** @var User $auth_user */
         $auth_user = Auth::id();
 
@@ -64,9 +70,9 @@ class CarouselController extends Controller
             'user_id' => $auth_user,
             'name' => $request->name,
             'alt' => $request->alt,
-            'active' => $request->active,
             'position' => $request->position
-        ]) ) {
+        ])
+        ) {
             $presenter = new CarouselPresenter($carousel);
             $presenter->additional(['success' => true]);
         }else{
@@ -93,44 +99,12 @@ class CarouselController extends Controller
         $status = $carousel->fill([
             'name' => $request->name,
             'alt' => $request->alt,
-            'active' => $request->active,
             'position' => $request->position
         ])->save();
 
+
         $presenter = new CarouselPresenter($carousel);
         $presenter->additional(['success' => $status]);
-
-        return $presenter;
-    }
-
-    public function updateCollection(Request $request)
-    {
-        $carousels = [];
-        foreach ($request->carousels as $carousel) {
-            array_push($carousels, $carousel['id']);
-        }
-        /** @var User $auth_user */
-        $auth_user = Auth::id();
-
-        $carouselsCollection = Carousel::select(['*'])
-            ->where('user_id', '=', $auth_user)
-            ->findOrFail($carousels);
-
-        foreach ($carouselsCollection as $index => $carousel) {
-            $status = $carousel->fill([
-                'name' => $request->carousels[$index]['name'],
-                'alt' => $request->carousels[$index]['alt'],
-                'active' => $request->carousels[$index]['active'],
-                'position' => $request->carousels[$index]['position'],
-            ])->save();
-        }
-
-        $carouselsCollection = Carousel::select(['*'])
-            ->where('user_id', '=', $auth_user)
-            ->findOrFail($carousels);
-
-
-        $presenter = new CarouselsCollectionPresenter($carouselsCollection);
 
         return $presenter;
     }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 
-class CarouselDatabaseSeeder extends Seeder
+class CarouselCarouselGroupDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,13 +22,15 @@ class CarouselDatabaseSeeder extends Seeder
 
         Model::unguard();
         $faker = Faker::create();
-        foreach (range(1,20) as $index) {
-            DB::table('carousels')->insert([
-                'user_id' => 1,
-                'name' => $faker->text(20),
-                'alt' => $faker->text(20),
-                'position' => $faker->numberBetween(1,5),
-            ]);
+
+        foreach (range(1, 3) as $value) {
+            foreach (range(1,5) as $index) {
+                DB::table('carousel_carousel_group')->insert([
+                    'carousel_group_id' => $value,
+                    'carousel_id' => $index,
+                    'active' => $faker->boolean
+                ]);
+            }
         }
 
     }

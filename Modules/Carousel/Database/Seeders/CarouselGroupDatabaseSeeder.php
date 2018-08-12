@@ -32,6 +32,5 @@ class CarouselGroupDatabaseSeeder extends Seeder
                 'name' => $faker->text(20)
             ]);
         }
-
     }
 }
