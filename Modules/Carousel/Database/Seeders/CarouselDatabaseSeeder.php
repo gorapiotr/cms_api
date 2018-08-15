@@ -2,6 +2,7 @@
 
 namespace Modules\Carousel\Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -16,10 +17,6 @@ class CarouselDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /** TODO
-         * timestamps();
-         */
-
         Model::unguard();
         $faker = Faker::create();
         foreach (range(1,20) as $index) {
@@ -28,6 +25,7 @@ class CarouselDatabaseSeeder extends Seeder
                 'name' => $faker->text(20),
                 'alt' => $faker->text(20),
                 'position' => $faker->numberBetween(1,5),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
         }
 
