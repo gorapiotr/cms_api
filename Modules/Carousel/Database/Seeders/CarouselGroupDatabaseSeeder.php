@@ -9,6 +9,7 @@
 namespace Modules\Carousel\Database\Seeders;
 
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,8 @@ class CarouselGroupDatabaseSeeder extends Seeder
         foreach (range(1,3) as $index) {
             DB::table('carousel_groups')->insert([
                 'user_id' => 1,
-                'name' => $faker->text(20)
+                'name' => $faker->text(20),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
         }
     }

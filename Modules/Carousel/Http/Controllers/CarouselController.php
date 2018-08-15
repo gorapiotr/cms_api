@@ -63,7 +63,6 @@ class CarouselController extends Controller
          * add to pivot table!
          */
 
-        dd($request);
         /** @var User $auth_user */
         $auth_user = Auth::id();
 

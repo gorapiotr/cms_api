@@ -13,10 +13,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            //User
             Modules\User\Database\Seeders\UserDatabaseSeeder::class,
+            //Carousel
             Modules\Carousel\Database\Seeders\CarouselGroupDatabaseSeeder::class,
             Modules\Carousel\Database\Seeders\CarouselDatabaseSeeder::class,
-            Modules\Carousel\Database\Seeders\CarouselCarouselGroupDatabaseSeeder::class
+            Modules\Carousel\Database\Seeders\CarouselCarouselGroupDatabaseSeeder::class,
+            //Settings
+            Modules\Settings\Database\Seeders\SettingsDatabaseSeeder::class
         ]);
     }
 }
