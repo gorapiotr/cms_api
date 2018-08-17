@@ -13,12 +13,14 @@
             <directory suffix="Test.php">./tests/Feature</directory>
             <directory suffix="Test.php">./Modules/User/Tests/Feature</directory>
             <directory suffix="Test.php">./Modules/Carousel/Tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/Settings/Tests/Feature</directory>
         </testsuite>
 
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
             <directory suffix="Test.php">./Modules/User/Tests/Unit</directory>
             <directory suffix="Test.php">./Modules/Carousel/Tests/Unit</directory>
+            <directory suffix="Test.php">./Modules/Settings/Tests/Feature</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -30,6 +32,8 @@
                 <file>./Modules/User/start.php</file>
                 <file>./Modules/Carousel/Http/routes.php</file>
                 <file>./Modules/Carousel/start.php</file>
+                <file>./Modules/Settings/Http/routes.php</file>
+                <file>./Modules/Settings/start.php</file>
             </exclude>
         </whitelist>
     </filter>
