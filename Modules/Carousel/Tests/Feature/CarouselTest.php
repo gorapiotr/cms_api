@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * carousel: piotrgora
- * Date: 11.08.2018
- * Time: 21:49
- */
-
 namespace Modules\Carousel\Tests;
 
 use Illuminate\Support\Facades\DB;

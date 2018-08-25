@@ -33,11 +33,9 @@ class SettingsPresenter extends Resource
             ],
             'updated_at' => $this->created_at->toDateString(),
             'updated_by' => [
-                [
-                    'id' => $this->updatedBy->id,
-                    'name' => $this->updatedBy->name,
-                    'email' => $this->updatedBy->email
-                ],
+                'id' => $this->updatedBy->id,
+                'name' => $this->updatedBy->name,
+                'email' => $this->updatedBy->email
             ]
         ];
         return $return;

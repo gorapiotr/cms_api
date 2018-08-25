@@ -20,7 +20,7 @@
             <directory suffix="Test.php">./tests/Unit</directory>
             <directory suffix="Test.php">./Modules/User/Tests/Unit</directory>
             <directory suffix="Test.php">./Modules/Carousel/Tests/Unit</directory>
-            <directory suffix="Test.php">./Modules/Settings/Tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/Settings/Tests/Unit</directory>
         </testsuite>
     </testsuites>
     <filter>

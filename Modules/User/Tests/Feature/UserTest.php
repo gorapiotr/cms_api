@@ -2,11 +2,13 @@
 
 namespace Modules\User\Tests;
 
-use Illuminate\Auth\Middleware\Authenticate;
+//use Illuminate\Auth\Middleware\Authenticate;
+//use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Modules\User\Model\User;
 use Tests\TestCase;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ReportSchemesUser
 {
@@ -87,11 +89,10 @@ class UserTest extends TestCase
         ];
 
         /* get authorization token */
-        $token = \JWTAuth::attempt([
+        $token = JWTAuth::attempt([
             'email' => $user['email'],
             'password' => $user['password']
         ]);
-
 
         $response = $this->withoutMiddleware()
             ->json(
