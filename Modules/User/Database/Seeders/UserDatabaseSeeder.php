@@ -2,7 +2,7 @@
 
 namespace Modules\User\Database\Seeders;
 
-use App\Role;
+use \Modules\User\Model\Role;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;

@@ -1,18 +1,19 @@
 <?php
 
+/** TODO
+ * Add permissions for profile
+ */
+
 return [
     'role_structure' => [
         'superadministrator' => [
             'users' => 'c,r,u,d',
-            'profile' => 'r,u',
-            'settings' => 'c,r,u,d'
+            'settings' => 'c,r,u,d',
+            'carousel' => 'c,r,u,d'
         ],
-//        'administrator' => [
-//            'users' => 'c,r,u,d',
-//            'profile' => 'r,u'
-//        ],
         'user' => [
-            'profile' => 'r,u'
+            'users' => 'r,u',
+            'carousel' => 'r'
         ],
     ],
     'permission_structure' => [

@@ -22,7 +22,7 @@ class LaratrustSeeder extends Seeder
         foreach ($config as $key => $modules) {
 
             // Create a new role
-            $role = \App\Role::create([
+            $role = \Modules\User\Model\Role::create([
                 'name' => $key,
                 'display_name' => ucwords(str_replace('_', ' ', $key)),
                 'description' => ucwords(str_replace('_', ' ', $key))
@@ -38,7 +38,7 @@ class LaratrustSeeder extends Seeder
 
                     $permissionValue = $mapPermission->get($perm);
 
-                    $permissions[] = \App\Permission::firstOrCreate([
+                    $permissions[] = \Modules\User\Model\Permission::firstOrCreate([
                         'name' => $permissionValue . '-' . $module,
                         'display_name' => ucfirst($permissionValue) . ' ' . ucfirst($module),
                         'description' => ucfirst($permissionValue) . ' ' . ucfirst($module),
@@ -83,7 +83,7 @@ class LaratrustSeeder extends Seeder
 
                         $permissionValue = $mapPermission->get($perm);
 
-                        $permissions[] = \App\Permission::firstOrCreate([
+                        $permissions[] = \Modules\User\Model\Permission::firstOrCreate([
                             'name' => $permissionValue . '-' . $module,
                             'display_name' => ucfirst($permissionValue) . ' ' . ucfirst($module),
                             'description' => ucfirst($permissionValue) . ' ' . ucfirst($module),
@@ -111,8 +111,8 @@ class LaratrustSeeder extends Seeder
         DB::table('permission_user')->truncate();
         DB::table('role_user')->truncate();
         \Modules\User\Model\User::truncate();
-        \App\Role::truncate();
-        \App\Permission::truncate();
+        \Modules\User\Model\Role::truncate();
+        \Modules\User\Model\Permission::truncate();
         Schema::enableForeignKeyConstraints();
     }
 }
