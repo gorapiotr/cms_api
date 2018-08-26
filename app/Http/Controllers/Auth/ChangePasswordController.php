@@ -1,10 +1,12 @@
 <?php
-namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangePasswordRequest;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 use App\User;
+
 class ChangePasswordController extends Controller
 {
     public function process(ChangePasswordRequest $request)

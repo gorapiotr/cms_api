@@ -19,17 +19,17 @@ Route::group([
 
 ], function () {
 
-    Route::post('login', 'AuthController@login');
+    Route::post('login', 'Auth\AuthController@login');
 
-    Route::post('signup', 'AuthController@signup');
+    Route::post('signup', 'Auth\AuthController@signup');
 
-    Route::post('logout', 'AuthController@logout');
+    Route::post('logout', 'Auth\AuthController@logout');
 
-    Route::post('refresh', 'AuthController@refresh');
+    Route::post('refresh', 'Auth\AuthController@refresh');
 
-    Route::post('me', 'AuthController@me');
+    Route::post('me', 'Auth\AuthController@me');
 
-    Route::post('sendPasswordResetLink', 'ResetPasswordController@sendEmail');
+    Route::post('sendPasswordResetLink', 'Auth\ResetPasswordController@sendEmail');
 
-    Route::post('resetPassword', 'ChangePasswordController@process');
+    Route::post('resetPassword', 'Auth\ChangePasswordController@process');
 });

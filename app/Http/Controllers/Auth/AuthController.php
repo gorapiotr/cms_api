@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\SignUpRequest;
 use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Modules\User\Presenters\UserLoginPresenter;
 
 class AuthController extends Controller
 {
@@ -38,7 +37,10 @@ class AuthController extends Controller
             return response()->json(['error' => 'Email or password does\'t exist'], 401);
         }
 
-        return $this->respondWithToken($token);
+        $presenter = new UserLoginPresenter(auth()->user());
+        $presenter->additional(['access_token' => $token]);
+
+        return $presenter;
     }
 
     public function signup(SignUpRequest $request)
@@ -78,22 +80,5 @@ class AuthController extends Controller
     public function refresh()
     {
         return $this->respondWithToken(auth()->refresh());
-    }
-
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function respondWithToken($token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60,
-            'user' => auth()->user()->name
-        ]);
     }
 }

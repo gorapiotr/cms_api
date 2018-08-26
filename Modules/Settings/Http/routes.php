@@ -4,6 +4,9 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'api/settings', 'namespace
 {
 
     /* Settings */
-    Route::get('/', 'SettingsController@index');
+    Route::get('/', 'SettingsController@index')->middleware([
+        'auth:api',
+        'permission:read-settings'
+    ]);
     Route::put('/{setting_id}', 'SettingsController@update');
 });
