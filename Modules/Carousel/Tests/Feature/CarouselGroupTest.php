@@ -105,7 +105,7 @@ class CarouselGroupTest extends TestCase
         $car = [
             [
                 'id' => 1,
-                'user_id' => 1,
+                'user_id' => 5,
                 'name' => $faker->text(20),
                 'alt' => $faker->text(20),
                 'active' => 1,
@@ -113,7 +113,7 @@ class CarouselGroupTest extends TestCase
             ],
             [
                 'id' => 2,
-                'user_id' => 1,
+                'user_id' => 5,
                 'name' => $faker->text(20),
                 'alt' => $faker->text(20),
                 'active' => 0,

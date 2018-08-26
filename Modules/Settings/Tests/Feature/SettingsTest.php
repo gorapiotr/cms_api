@@ -84,23 +84,22 @@ class SettingsTest extends TestCase
         $this->assertEquals($count, count($response));
     }
 
-    public function testUpdateSetting()
-    {
-        $setting = Settings::inRandomOrder()
-            ->first();
-        $faker = Faker::create();
-        $response = $this->withoutMiddleware()
-            ->json(
-                'PUT',
-                $this->testing_url.$setting->id,
-                ['key'=> $setting->key,
-                 'value'=> $setting->value
-                ]
-            )->dump();
-            //->assertStatus(200)
-            //->assertJsonStructure($this->schemes->show)
-            //->decodeResponseJson('data');
-
-    }
+//    public function testUpdateSetting()
+//    {
+//        $setting = Settings::inRandomOrder()
+//            ->first();
+//        $faker = Faker::create();
+//        $response = $this->withoutMiddleware()
+//            ->json(
+//                'PUT',
+//                $this->testing_url.$setting->id,
+//                ['key'=> $setting->key,
+//                 'value'=> $setting->value
+//                ]
+//            )->assertStatus(200)
+//            ->assertJsonStructure($this->schemes->show)
+//            ->decodeResponseJson('data');
+//
+//    }
 
 }

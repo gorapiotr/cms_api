@@ -29,7 +29,7 @@ class CarouselGroupDatabaseSeeder extends Seeder
         $faker = Faker::create();
         foreach (range(1,3) as $index) {
             DB::table('carousel_groups')->insert([
-                'user_id' => 1,
+                'user_id' => 5,
                 'name' => $faker->text(20),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);

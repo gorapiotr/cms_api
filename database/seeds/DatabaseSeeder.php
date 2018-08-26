@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            //Permissions
+            LaratrustSeeder::class,
             //User
             Modules\User\Database\Seeders\UserDatabaseSeeder::class,
             //Carousel
