@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Requests\SignUpRequest;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Modules\User\Presenters\UserLoginPresenter;
 
 class AuthController extends Controller
@@ -46,6 +47,14 @@ class AuthController extends Controller
     public function signup(SignUpRequest $request)
     {
         User::create($request->all());
+
+        $user = User::where('email', '=', $request->email)->first();
+
+        DB::table('role_user')->insert([
+            'role_id' => 1,
+            'user_id' => $user->id,
+            'user_type' => 'Modules\User\Model\User'
+        ]);
 
         return $this->login($request);
     }
