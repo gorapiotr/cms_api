@@ -2,8 +2,6 @@
 
 namespace Modules\User\Tests;
 
-//use Illuminate\Auth\Middleware\Authenticate;
-//use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Modules\User\Model\User;

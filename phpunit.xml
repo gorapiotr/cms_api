@@ -30,6 +30,7 @@
             <exclude>
                 <file>./Modules/User/Http/routes.php</file>
                 <file>./Modules/User/start.php</file>
+                <file>./Modules/User/Database/factories/UserFactory.php</file>
                 <file>./Modules/Carousel/Http/routes.php</file>
                 <file>./Modules/Carousel/start.php</file>
                 <file>./Modules/Settings/Http/routes.php</file>

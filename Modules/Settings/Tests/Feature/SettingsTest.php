@@ -10,8 +10,10 @@ namespace Modules\Settings\Tests\Feature;
 
 use Illuminate\Support\Facades\DB;
 use Modules\Settings\Model\Settings;
+use Modules\User\Model\User;
 use Tests\TestCase;
 use Faker\Factory as Faker;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ReportSchemesSettings
 {
@@ -61,13 +63,19 @@ class ReportSchemesSettings
 
 class SettingsTest extends TestCase
 {
-    public $schemes = null;
-
+    public $schemes;
     public $testing_url = 'api/settings/';
+    public $user;
+    public $token;
+    public $setting;
 
     public function setUp()
     {
+        $this->refreshApplication();
         $this->schemes = new ReportSchemesSettings();
+        $this->user = factory(\Modules\User\Model\User::class)->create();
+
+        $this->token = JWTAuth::fromUser($this->user);
         parent::setUp();
     }
 
@@ -84,22 +92,23 @@ class SettingsTest extends TestCase
         $this->assertEquals($count, count($response));
     }
 
-//    public function testUpdateSetting()
-//    {
-//        $setting = Settings::inRandomOrder()
-//            ->first();
-//        $faker = Faker::create();
-//        $response = $this->withoutMiddleware()
-//            ->json(
-//                'PUT',
-//                $this->testing_url.$setting->id,
-//                ['key'=> $setting->key,
-//                 'value'=> $setting->value
-//                ]
-//            )->assertStatus(200)
-//            ->assertJsonStructure($this->schemes->show)
-//            ->decodeResponseJson('data');
-//
-//    }
+    public function testUpdateSetting()
+    {
+        /** @var Settings $setting*/
+        $setting = Settings::inRandomOrder()
+            ->first();
+
+
+        $response = $this->withoutMiddleware()
+            ->json(
+                'PUT',
+                $this->testing_url.$setting->id,
+               $setting->toArray(),
+                ['Authorization' => 'Bearer '.$this->token ]
+            )->assertStatus(200)
+            ->assertJsonStructure($this->schemes->show)
+            ->decodeResponseJson('data');
+
+    }
 
 }

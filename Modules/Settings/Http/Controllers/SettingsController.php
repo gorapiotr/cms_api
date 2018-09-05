@@ -24,9 +24,7 @@ class SettingsController extends Controller
 
     public function update(UpdateSettingRequest $request, int $setting_id)
     {
-
         $setting = Settings::where('key', '=', $request->key)
-                ->findOrFail($setting_id)
                 ->first();
 
         $setting->fill([
