@@ -73,8 +73,8 @@ class SettingsTest extends TestCase
     {
         $this->refreshApplication();
         $this->schemes = new ReportSchemesSettings();
-        $this->user = factory(\Modules\User\Model\User::class)->create();
-
+        $this->user = factory(\Modules\User\Model\User::class)->create()->attachRole('superadministrator');
+        $this->setting = factory(\Modules\Settings\Model\Settings::class)->create();
         $this->token = JWTAuth::fromUser($this->user);
         parent::setUp();
     }
@@ -94,21 +94,15 @@ class SettingsTest extends TestCase
 
     public function testUpdateSetting()
     {
-        /** @var Settings $setting*/
-        $setting = Settings::inRandomOrder()
-            ->first();
-
-
-        $response = $this->withoutMiddleware()
+        $this->withoutMiddleware()
             ->json(
                 'PUT',
-                $this->testing_url.$setting->id,
-               $setting->toArray(),
+                $this->testing_url.$this->setting->id,
+               $this->setting->toArray(),
                 ['Authorization' => 'Bearer '.$this->token ]
             )->assertStatus(200)
             ->assertJsonStructure($this->schemes->show)
             ->decodeResponseJson('data');
-
     }
 
 }

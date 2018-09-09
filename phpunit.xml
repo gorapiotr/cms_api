@@ -35,6 +35,7 @@
                 <file>./Modules/Carousel/start.php</file>
                 <file>./Modules/Settings/Http/routes.php</file>
                 <file>./Modules/Settings/start.php</file>
+                <file>./Modules/Settings/Database/factories/SettingFactory.php</file>
             </exclude>
         </whitelist>
     </filter>
