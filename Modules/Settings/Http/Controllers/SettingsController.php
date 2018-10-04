@@ -11,6 +11,8 @@ use Modules\Settings\Http\Requests\UpdateSettingRequest;
 use Modules\Settings\Model\Settings;
 use Modules\Settings\Presenters\SettingsCollectionPresenters;
 use Modules\Settings\Presenters\SettingsPresenter;
+use Illuminate\Support\Facades\Storage;
+
 
 class SettingsController extends Controller
 {
@@ -24,6 +26,7 @@ class SettingsController extends Controller
 
     public function update(UpdateSettingRequest $request, int $setting_id)
     {
+
         $setting = Settings::where('key', '=', $request->key)
                 ->first();
 
@@ -32,6 +35,13 @@ class SettingsController extends Controller
             'updated_by' => Auth::id(),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ])->save();
+
+        if($request->hasFile('file')) {
+            $path = Storage::putFile(
+                'public/settings', $request->file('file'));
+            $setting->value = asset(Storage::url($path));
+            $setting->save();
+        }
 
         $presenter = new SettingsPresenter($setting);
 

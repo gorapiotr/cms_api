@@ -8,9 +8,9 @@
 
 namespace Modules\User\Presenters;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class UsersListPresenter extends Resource
+class UsersListPresenter extends ResourceCollection
 {
     /**
      * @param \Illuminate\Http\Request $request
@@ -19,9 +19,7 @@ class UsersListPresenter extends Resource
      */
     public function toArray($request): array
     {
-        $return['data'] = UserPresenter::collection($this);
-
-        return $return;
+        return ['data' => UserPresenter::collection($this)];
     }
 
 }

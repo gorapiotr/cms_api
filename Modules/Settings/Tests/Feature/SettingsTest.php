@@ -9,10 +9,7 @@
 namespace Modules\Settings\Tests\Feature;
 
 use Illuminate\Support\Facades\DB;
-use Modules\Settings\Model\Settings;
-use Modules\User\Model\User;
 use Tests\TestCase;
-use Faker\Factory as Faker;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ReportSchemesSettings
