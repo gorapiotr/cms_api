@@ -3,8 +3,6 @@
 namespace Modules\Settings\Http\Controllers;
 
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Modules\Settings\Http\Requests\UpdateSettingRequest;
@@ -39,7 +37,8 @@ class SettingsController extends Controller
         if($request->hasFile('file')) {
             $path = Storage::putFile(
                 'public/settings', $request->file('file'));
-            $setting->value = asset(Storage::url($path));
+            $setting->value = $path;
+            $setting->type = 'image';
             $setting->save();
         }
 

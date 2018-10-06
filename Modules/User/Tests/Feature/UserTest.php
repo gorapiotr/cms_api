@@ -48,15 +48,15 @@ class UserTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testGetUsersList()
-    {
-        /**
-         * TODO
-         *
-         * refactoring this test for pagination
-         *
-         */
-
+//    public function testGetUsersList()
+//    {
+//        /**
+//         * TODO
+//         *
+//         * refactoring this test for pagination
+//         *
+//         */
+//
 //       $count =  DB::table('users')->count();
 //
 //        $response = $this->withoutMiddleware()
@@ -66,7 +66,7 @@ class UserTest extends TestCase
 //            ->decodeResponseJson('data');
 //
 //        $this->assertEquals($count, count($response));
-    }
+//    }
 
     public function testGetUserById()
     {
@@ -134,7 +134,7 @@ class UserTest extends TestCase
 
         $response = $this->withoutMiddleware()
             ->json(
-                'PUT',
+                'POST',
                 $this->testing_url,
                 ['name' => 'john'],
                 ['Authorization' => 'Bearer '.$token ]
@@ -147,7 +147,7 @@ class UserTest extends TestCase
 
         $response = $this->withoutMiddleware()
             ->json(
-                'PUT',
+                'POST',
                 $this->testing_url,
                 ['name' => 'admin'],
                 ['Authorization' => 'Bearer '.$token ]

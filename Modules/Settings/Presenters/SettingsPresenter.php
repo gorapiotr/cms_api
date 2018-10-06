@@ -10,6 +10,7 @@ namespace Modules\Settings\Presenters;
 
 
 use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Support\Facades\Storage;
 
 class SettingsPresenter extends Resource
 {
@@ -23,7 +24,7 @@ class SettingsPresenter extends Resource
         $return = [
             'id' => $this->id,
             'key' => $this->key,
-            'value' => $this->value,
+            'value' => !($this->type == 'image') ? $this->value : asset(Storage::url($this->value)),
             'type' => $this->type,
             'created_at' => $this->created_at->toDateString(),
             'created_by' => [

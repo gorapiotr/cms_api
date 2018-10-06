@@ -7,7 +7,7 @@ $factory->define(Modules\Settings\Model\Settings::class, function (Faker $faker)
     return [
         'key' => $faker->word,
         'value' => $faker->text($maxNbChars = 200),
-        'type' => $faker->randomElement(['page']),
+        'type' => $faker->randomElement(['text', 'image']),
         'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
         'created_by' => 1,
         'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),

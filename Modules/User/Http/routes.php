@@ -18,7 +18,7 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'api/user', 'namespace' =>
         'permission:read-users'
     ]);
     /*Update profile*/
-    Route::put('/', 'UserController@update')->middleware([
+    Route::post('/{user_id}', 'UserController@update')->middleware([
         'auth:api',
         'permission:update-users'
     ]);

@@ -10,6 +10,8 @@ namespace Modules\User\Presenters;
 
 
 use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Support\Facades\Storage;
+use Modules\User\Model\User;
 
 class UserPresenter extends Resource
 {
@@ -20,10 +22,13 @@ class UserPresenter extends Resource
      */
     public function toArray($request): array
     {
+        /** @var User $this */
         $return = [
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
+            'avatar' => $this->avatar_type == 'image' ? asset(Storage::url($this->avatar)) : $this->avatar,
+            'avatar_type' => $this->avatar_type
         ];
         return $return;
     }

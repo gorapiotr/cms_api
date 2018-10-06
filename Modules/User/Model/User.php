@@ -12,6 +12,15 @@ use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
+/**
+ * Class User
+ * @package Modules\User\Model
+ *
+ * @property string $name
+ * @property string $email
+ * @property string $avatar
+ * @property string $avatar_type
+ */
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
@@ -23,7 +32,11 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'avatar',
+        'avatar_type'
     ];
 
     /**
