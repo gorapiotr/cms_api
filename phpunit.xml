@@ -28,14 +28,21 @@
             <directory suffix=".php">./app</directory>
             <directory suffix=".php">./Modules</directory>
             <exclude>
+                <!--User Module -->
                 <file>./Modules/User/Http/routes.php</file>
                 <file>./Modules/User/start.php</file>
                 <file>./Modules/User/Database/factories/UserFactory.php</file>
+                <!--Carousel Module -->
                 <file>./Modules/Carousel/Http/routes.php</file>
                 <file>./Modules/Carousel/start.php</file>
+                <!--Settings Module -->
                 <file>./Modules/Settings/Http/routes.php</file>
                 <file>./Modules/Settings/start.php</file>
                 <file>./Modules/Settings/Database/factories/SettingFactory.php</file>
+                <!--Post Module -->
+                <file>./Modules/Post/Http/routes.php</file>
+                <file>./Modules/Post/start.php</file>
+                <file>./Modules/Post/Database/factories/PostFactory.php</file>
             </exclude>
         </whitelist>
     </filter>

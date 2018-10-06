@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
             Modules\Carousel\Database\Seeders\CarouselDatabaseSeeder::class,
             Modules\Carousel\Database\Seeders\CarouselCarouselGroupDatabaseSeeder::class,
             //Settings
-            Modules\Settings\Database\Seeders\SettingsDatabaseSeeder::class
+            Modules\Settings\Database\Seeders\SettingsDatabaseSeeder::class,
+            //Post
+            Modules\Post\Database\Seeders\PostDatabaseSeeder::class
         ]);
     }
 }
