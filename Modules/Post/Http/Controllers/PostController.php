@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Post\Presenters\PostCollectionPresenter;
+use Modules\Post\Presenters\PostPresenter;
 use Modules\Post\Service\PostService;
 
 class PostController extends Controller
@@ -18,7 +19,7 @@ class PostController extends Controller
         /** @var PostService $postService */
         $postService = app()->make('post');
 
-       $posts = $postService->index();
+        $posts = $postService->index();
 
         $presenter = new PostCollectionPresenter($posts);
         $presenter->additional(['success' => true]);
@@ -48,9 +49,17 @@ class PostController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show(int $postId)
     {
-        return view('post::show');
+        /** @var PostService $postService */
+        $postService = app()->make('post');
+
+        $post = $postService->show($postId);
+
+        $presenter = new PostPresenter($post);
+        $presenter->additional(['success' => true]);
+
+        return $presenter;
     }
 
     /**

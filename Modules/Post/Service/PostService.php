@@ -26,4 +26,12 @@ class PostService
     {
         return $this->builder->paginate(15);
     }
+
+    public function show(int $postId)
+    {
+        /** @var Post $post */
+        $post = $this->builder->findOrFail($postId);
+
+        return $post;
+    }
 }

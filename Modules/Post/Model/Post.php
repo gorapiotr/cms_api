@@ -5,6 +5,7 @@
  * Date: 06.10.2018
  * Time: 14:45
  */
+
 namespace Modules\Post\Model;
 
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +19,9 @@ use Modules\User\Model\User;
  * @property int $id
  * @property string $content
  * @property string $slug
+ * @property string $main_image
+ * @property string $main_image_type
+ * @property string $lead
  * @property User $createdBy
  * @property Carbon $created_at
  * @property User $updatedBy
@@ -27,15 +31,26 @@ class Post extends Model
 {
     protected $table = 'posts';
 
+    protected $fillable = [
+        'content',
+        'slug',
+        'main_image',
+        'main_image_type',
+        'lead',
+        'updated_by'
+    ];
+
     protected $dates = [
         'created_at',
         'updated_at',];
 
-    public function createdBy() {
+    public function createdBy()
+    {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function updatedBy() {
+    public function updatedBy()
+    {
         return $this->belongsTo(User::class, 'updated_by');
     }
 }

@@ -7,9 +7,12 @@
 return [
     'role_structure' => [
         'superadministrator' => [
-            'users' => 'c,r,u,d',
-            'settings' => 'c,r,u,d',
-            'carousel' => 'c,r,u,d'
+            'users' => 'c,r,u,d,m',
+            'settings' => 'c,r,u,d,m',
+            'carousel' => 'c,r,u,d,m',
+            'component' => 'c,r,u,d,m',
+            'asset' => 'c,r,u,d,m',
+            'post' => 'c,r,u,d,m',
         ],
         'user' => [
             'users' => 'r,u',
@@ -25,6 +28,7 @@ return [
         'c' => 'create',
         'r' => 'read',
         'u' => 'update',
-        'd' => 'delete'
+        'd' => 'delete',
+        'm' => 'menu'
     ]
 ];
