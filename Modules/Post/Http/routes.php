@@ -4,4 +4,5 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'api/post', 'namespace' =>
 {
     Route::get('/', 'PostController@index');
     Route::get('/{postId}', 'PostController@show');
+    Route::post('/{postId}', 'PostController@update');
 });
