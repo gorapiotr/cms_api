@@ -47,12 +47,11 @@ class PostController extends Controller
         $post = Post::findOrFail($post_id)
             ->first();
 
-
         if($request->hasFile('main_image_file')) {
             $path = Storage::putFile(
                 'public/post', $request->file('main_image_file'));
-            $post->value = $path;
-            $post->type = 'image';
+            $post->main_image = $path;
+            $post->main_image_type = 'image';
         }
 
         $post->fill($request->all());

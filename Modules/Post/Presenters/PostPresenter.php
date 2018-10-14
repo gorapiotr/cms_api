@@ -10,6 +10,7 @@ namespace Modules\Post\Presenters;
 
 use Illuminate\Http\Resources\Json\Resource;
 use Modules\Post\Model\Post;
+use Illuminate\Support\Facades\Storage;
 
 class PostPresenter extends Resource
 {
