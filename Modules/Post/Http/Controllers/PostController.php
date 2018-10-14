@@ -43,9 +43,7 @@ class PostController extends Controller
 
     public function update(UpdatePostRequest $request, int $post_id)
     {
-
-        $post = Post::findOrFail($post_id)
-            ->first();
+        $post = Post::findOrFail($post_id);
 
         if($request->hasFile('main_image_file')) {
             $path = Storage::putFile(

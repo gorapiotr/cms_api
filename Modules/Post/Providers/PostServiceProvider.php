@@ -5,6 +5,7 @@ namespace Modules\Post\Providers;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Post\Service\PostPageService;
 use Modules\Post\Service\PostService;
 
 class PostServiceProvider extends ServiceProvider
@@ -39,6 +40,9 @@ class PostServiceProvider extends ServiceProvider
     {
         App::bind('post', function(){
             return new PostService;
+        });
+        App::bind('postPage', function(){
+            return new PostPageService;
         });
 
     }

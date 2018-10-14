@@ -19,6 +19,7 @@ use Modules\User\Model\User;
  * @property int $id
  * @property string $content
  * @property string $slug
+ * @property string $title
  * @property string $main_image
  * @property string $main_image_type
  * @property string $lead

@@ -8,5 +8,8 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'api/settings', 'namespace
         'auth:api',
         'permission:read-settings'
     ]);
-    Route::post('/{setting_id}', 'SettingsController@update');
+    Route::post('/{setting_id}', 'SettingsController@update')->middleware([
+        'auth:api',
+        'permission:update-settings'
+    ]);;
 });

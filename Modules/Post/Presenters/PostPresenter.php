@@ -25,17 +25,18 @@ class PostPresenter extends Resource
         $return = [
             'id' => $this->id,
             'content' => $this->content,
+            'title' => $this->title,
             'slug' => $this->slug,
             'lead' => $this->lead,
             'main_image' => !($this->main_image_type == 'image') ? $this->main_image : asset(Storage::url($this->main_image)),
             'main_image_type' => $this->main_image_type,
-            'created_at' => $this->created_at->toDateString(),
+            'created_at' => $this->created_at->toFormattedDateString(),
             'created_by' => [
                 'id' => $this->createdBy->id,
                 'name' => $this->createdBy->name,
                 'email' => $this->createdBy->email
             ],
-            'updated_at' => $this->created_at->toDateString(),
+            'updated_at' => $this->updated_at->toFormattedDateString(),
             'updated_by' => [
                 'id' => $this->updatedBy->id,
                 'name' => $this->updatedBy->name,
