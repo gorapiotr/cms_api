@@ -13,3 +13,9 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'api/settings', 'namespace
         'permission:update-settings'
     ]);;
 });
+
+
+Route::group(['prefix' => 'api/page/settings', 'namespace' => 'Modules\Settings\Http\Controllers'], function() {
+
+    Route::get('/', 'SettingsPageController@index');
+});

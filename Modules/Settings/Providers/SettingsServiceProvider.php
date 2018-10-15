@@ -4,6 +4,8 @@ namespace Modules\Settings\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Settings\Service\SettingsPageService;
+use Illuminate\Support\Facades\App;
 
 class SettingsServiceProvider extends ServiceProvider
 {
@@ -35,7 +37,10 @@ class SettingsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+        App::bind('settingsPage', function(){
+            return new SettingsPageService;
+        });
     }
 
     /**
