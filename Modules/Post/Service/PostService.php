@@ -8,7 +8,11 @@
 
 namespace Modules\Post\Service;
 
+use Illuminate\Support\Facades\Auth;
+use Modules\Post\Http\Requests\CreatePostRequest;
 use Modules\Post\Model\Post;
+use Illuminate\Support\Facades\Storage;
+
 
 class PostService
 {
@@ -24,7 +28,9 @@ class PostService
      */
     public function index()
     {
-        return $this->builder->paginate(15);
+        return $this->builder
+            ->orderBy('created_by', 'desc')
+            ->paginate(15);
     }
 
     public function show(int $postId)
@@ -34,4 +40,24 @@ class PostService
 
         return $post;
     }
+
+    public function create(CreatePostRequest $request)
+    {
+        /** @var Post $post */
+        $post = new Post();
+        $post->fill($request->toArray());
+
+        if($request->hasFile('main_image_file')) {
+            $path = Storage::putFile(
+                'public/post', $request->file('main_image_file'));
+            $post->main_image = $path;
+            $post->main_image_type = 'image';
+        }
+
+        $post->created_by = Auth::id();
+        $post->updated_by = Auth::id();
+
+        return $post;
+    }
+
 }

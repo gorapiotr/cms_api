@@ -24,7 +24,9 @@ class PostPageService
      */
     public function index()
     {
-        return $this->builder->paginate(6);
+        return $this->builder
+            ->orderBy('created_by', 'desc')
+            ->paginate(6);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace Modules\Post\Http\Controllers;
 
 use Illuminate\Routing\Controller;
+use Modules\Post\Http\Requests\CreatePostRequest;
 use Modules\Post\Http\Requests\UpdatePostRequest;
 use Modules\Post\Model\Post;
 use Modules\Post\Presenters\PostCollectionPresenter;
@@ -32,7 +33,7 @@ class PostController extends Controller
     {
         /** @var PostService $postService */
         $postService = app()->make('post');
-
+        /** @var Post $post */
         $post = $postService->show($postId);
 
         $presenter = new PostPresenter($post);
@@ -43,6 +44,7 @@ class PostController extends Controller
 
     public function update(UpdatePostRequest $request, int $post_id)
     {
+        /** @var Post $post */
         $post = Post::findOrFail($post_id);
 
         if($request->hasFile('main_image_file')) {
@@ -60,5 +62,21 @@ class PostController extends Controller
 
         return $presenter;
     }
+
+    public function store(CreatePostRequest $request)
+    {
+        /** @var PostService $postService */
+        $postService = app()->make('post');
+
+        /** @var Post $post */
+        $post = $postService->create($request);
+        $status = $post->save();
+
+        $presenter = new PostPresenter($post);
+        $presenter->additional(['success' => $status ]);
+        return $presenter;
+    }
+
+
 
 }

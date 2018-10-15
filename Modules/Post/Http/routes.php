@@ -14,6 +14,10 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'api/post', 'namespace' =>
         'auth:api',
         'permission:update-post'
     ]);
+    Route::post('/', 'PostController@store')->middleware([
+        'auth:api',
+        'permission:create-post'
+    ]);
 });
 
 Route::group(['prefix' => 'api/page/post', 'namespace' => 'Modules\Post\Http\Controllers'], function() {

@@ -23,9 +23,9 @@ use Modules\User\Model\User;
  * @property string $main_image
  * @property string $main_image_type
  * @property string $lead
- * @property User $createdBy
+ * @property User $created_by
  * @property Carbon $created_at
- * @property User $updatedBy
+ * @property User $updated_by
  * @property Carbon $updated_at
  */
 class Post extends Model
@@ -38,7 +38,8 @@ class Post extends Model
         'main_image',
         'main_image_type',
         'lead',
-        'updated_by'
+        'updated_by',
+        'title'
     ];
 
     protected $dates = [
