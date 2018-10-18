@@ -49,6 +49,16 @@ class SettingsDatabaseSeeder extends Seeder
         ]);
 
         DB::table('settings')->insert([
+            'key' => 'admin_logo',
+            'value' => 'https://firebasestorage.googleapis.com/v0/b/cmsimage-9ec21.appspot.com/o/blog_page.svg?alt=media&token=182a9143-4b17-4477-b06e-9ca6b98cbffc',
+            'type' => 'url',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_by' => 1,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_by' => 1,
+        ]);
+
+        DB::table('settings')->insert([
             'key' => 'cover_image',
             'value' => 'https://casper.ghost.org/v1.0.0/images/blog-cover.jpg',
             'type' => 'url',
