@@ -25,6 +25,7 @@ class PostPageService
     public function index()
     {
         return $this->builder
+            ->where('public', '=', true)
             ->orderBy('created_by', 'desc')
             ->paginate(6);
     }

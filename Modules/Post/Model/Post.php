@@ -20,6 +20,7 @@ use Modules\User\Model\User;
  * @property string $content
  * @property string $slug
  * @property string $title
+ * @property boolean $public
  * @property string $main_image
  * @property string $main_image_type
  * @property string $lead
@@ -39,7 +40,8 @@ class Post extends Model
         'main_image_type',
         'lead',
         'updated_by',
-        'title'
+        'title',
+        'public'
     ];
 
     protected $dates = [

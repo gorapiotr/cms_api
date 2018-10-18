@@ -30,6 +30,7 @@ class PostPresenter extends Resource
             'lead' => $this->lead,
             'main_image' => !($this->main_image_type == 'image') ? $this->main_image : asset(Storage::url($this->main_image)),
             'main_image_type' => $this->main_image_type,
+            'public' => $this->public,
             'created_at' => $this->created_at->toFormattedDateString(),
             'created_by' => [
                 'id' => $this->createdBy->id,

@@ -1,10 +1,18 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: piotrgora
+ * Date: 15.10.2018
+ * Time: 10:15
+ */
+
 namespace Modules\Post\Http\Requests;
+
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdatePostRequest extends FormRequest
+class CreatePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +35,7 @@ class UpdatePostRequest extends FormRequest
             'slug' => [
                 'string',
                 'required',
-                Rule::unique('posts','slug')->ignore($this->get('id'))
+                Rule::unique('posts', 'slug')
             ],
             'content' => [
                 'string',
@@ -36,7 +44,7 @@ class UpdatePostRequest extends FormRequest
             'lead' => [
                 'string',
                 'required'
-            ],
+                ],
             'title' => [
                 'string',
                 'required'
@@ -44,6 +52,7 @@ class UpdatePostRequest extends FormRequest
             'public' => [
                 'required'
             ]
+
         ];
     }
 }
