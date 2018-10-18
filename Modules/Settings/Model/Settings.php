@@ -8,10 +8,19 @@
 
 namespace Modules\Settings\Model;
 
-
 use Illuminate\Database\Eloquent\Model;
 use Modules\User\Model\User;
 
+/**
+ * Class Settings
+ * @property int $id
+ * @property string $key
+ * @property string $value
+ * @property string $description
+ * @property string $type
+ *
+ * @package Modules\Settings\Model
+ */
 class Settings extends Model
 {
     protected $table = 'settings';

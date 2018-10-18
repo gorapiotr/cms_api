@@ -11,6 +11,7 @@ namespace Modules\Settings\Presenters;
 
 use Illuminate\Http\Resources\Json\Resource;
 use Illuminate\Support\Facades\Storage;
+use Modules\Settings\Model\Settings;
 
 class SettingsPresenter extends Resource
 {
@@ -20,11 +21,12 @@ class SettingsPresenter extends Resource
      * @return array
      */
     public function toArray($request): array
-    {
+    {   /** @var Settings $this */
         $return = [
             'id' => $this->id,
             'key' => $this->key,
             'value' => !($this->type == 'image') ? $this->value : asset(Storage::url($this->value)),
+            'description' => $this->description,
             'type' => $this->type,
             'created_at' => $this->created_at->toDateString(),
             'created_by' => [

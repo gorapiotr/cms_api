@@ -17,6 +17,7 @@ class CreateSettingsTable extends Migration
             $table->increments('id');
             $table->string('key');
             $table->text('value');
+            $table->text('description');
             $table->enum('type', ['text', 'image', 'url']);
             $table->integer('created_by')->unsigned()->index();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
