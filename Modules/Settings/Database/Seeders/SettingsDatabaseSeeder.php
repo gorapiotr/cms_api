@@ -171,5 +171,106 @@ class SettingsDatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_by' => 1,
         ]);
+
+        //MENU ITEMS
+
+        DB::table('settings')->insert([
+            'key' => 'home_menu_item',
+            'value' => 'Main page',
+            'description' => 'Main page',
+            'type' => 'text',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_by' => 1,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_by' => 1,
+        ]);
+
+        DB::table('settings')->insert([
+            'key' => 'home_menu_item_slug',
+            'value' => '',
+            'description' => 'Main page slug',
+            'type' => 'text',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_by' => 1,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_by' => 1,
+        ]);
+
+        DB::table('settings')->insert([
+            'key' => 'active_home_menu_item',
+            'value' => 'true',
+            'description' => 'Show home item',
+            'type' => 'text',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_by' => 1,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_by' => 1,
+        ]);
+
+        DB::table('settings')->insert([
+            'key' => 'about_menu_item',
+            'value' => 'About page',
+            'description' => 'About page',
+            'type' => 'text',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_by' => 1,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_by' => 1,
+        ]);
+
+        DB::table('settings')->insert([
+            'key' => 'about_menu_item_slug',
+            'value' => '',
+            'description' => 'About page slug',
+            'type' => 'text',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_by' => 1,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_by' => 1,
+        ]);
+
+        DB::table('settings')->insert([
+            'key' => 'active_about_menu_item',
+            'value' => 'true',
+            'description' => 'Show about item',
+            'type' => 'text',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_by' => 1,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_by' => 1,
+        ]);
+
+        DB::table('settings')->insert([
+            'key' => 'contact_menu_item',
+            'value' => 'Contact page',
+            'description' => 'Contact page',
+            'type' => 'text',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_by' => 1,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_by' => 1,
+        ]);
+
+        DB::table('settings')->insert([
+            'key' => 'contact_menu_item_slug',
+            'value' => '',
+            'description' => 'Contact page slug',
+            'type' => 'text',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_by' => 1,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_by' => 1,
+        ]);
+
+        DB::table('settings')->insert([
+            'key' => 'active_contact_menu_item',
+            'value' => 'true',
+            'description' => 'Show contact item',
+            'type' => 'text',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_by' => 1,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_by' => 1,
+        ]);
     }
 }
