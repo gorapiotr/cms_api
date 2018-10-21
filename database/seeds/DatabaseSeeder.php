@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             //Settings
             Modules\Settings\Database\Seeders\SettingsDatabaseSeeder::class,
             //Post
-            Modules\Post\Database\Seeders\PostDatabaseSeeder::class
+            Modules\Post\Database\Seeders\PostDatabaseSeeder::class,
         ]);
     }
 }

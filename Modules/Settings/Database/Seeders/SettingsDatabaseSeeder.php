@@ -20,7 +20,7 @@ class SettingsDatabaseSeeder extends Seeder
 
             DB::table('settings')->insert([
                 'key' => 'title',
-                'value' => 'admin',
+                'value' => 'CMS',
                 'description' => 'title',
                 'type' => 'text',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
