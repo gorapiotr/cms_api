@@ -9,6 +9,7 @@
 namespace Modules\Post\Http\Controllers;
 
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Post\Presenters\PostCollectionPresenter;
 use Modules\Post\Presenters\PostPresenter;
@@ -41,6 +42,21 @@ class PostPageController extends Controller
         $post = $postPageService->show($slug);
 
         $presenter = new PostPresenter($post);
+        $presenter->additional(['success' => true]);
+
+        return $presenter;
+    }
+
+    public function getCollection(Request $request)
+    {
+
+        /** @var PostPageService $postPageService */
+        $postPageService = app()->make('postPage');
+
+        $posts = $postPageService->getCollection($request->postIds);
+
+
+        $presenter = new PostCollectionPresenter($posts);
         $presenter->additional(['success' => true]);
 
         return $presenter;

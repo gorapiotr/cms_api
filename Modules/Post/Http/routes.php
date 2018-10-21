@@ -23,4 +23,5 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'api/post', 'namespace' =>
 Route::group(['prefix' => 'api/page/post', 'namespace' => 'Modules\Post\Http\Controllers'], function() {
     Route::get('/', 'PostPageController@index');
     Route::get('/{slug}', 'PostPageController@show');
+    Route::post('/get-posts', 'PostPageController@getCollection');
 });

@@ -47,4 +47,11 @@ class PostPageService
 
         return $post;
     }
+
+    public function getCollection(array $postIds)
+    {
+        return $this->builder
+            ->whereIn('id',$postIds)
+            ->get();
+    }
 }
