@@ -2,71 +2,38 @@
 
 namespace Modules\Slider\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller;
+use Modules\Slider\Model\Slider;
+use Modules\Slider\Http\Requests\UpdateSliderRequest;
+use Modules\Slider\Presenters\SliderCollectionPresenters;
+use Modules\Slider\Presenters\SliderPresenter;
 
 class SliderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Response
-     */
     public function index()
     {
-        return view('slider::index');
+        $slides = Slider::all();
+        $presenter = new SliderCollectionPresenters($slides);
+
+        return $presenter;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
+    public function update(UpdateSliderRequest $request)
     {
-        return view('slider::create');
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-    }
+        $slide = new Slider;
 
-    /**
-     * Show the specified resource.
-     * @return Response
-     */
-    public function show()
-    {
-        return view('slider::show');
-    }
+        $slide->fill([
+            'file_name' => $request->file_name,
+            'image_url' => $request->image_url,
+            'updated_by' => Auth::id(),
+            'created_by' => Auth::id(),
+        ])->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function edit()
-    {
-        return view('slider::edit');
-    }
+        $presenter = new SliderPresenter($slide);
 
-    /**
-     * Update the specified resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function update(Request $request)
-    {
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @return Response
-     */
-    public function destroy()
-    {
+        return $presenter;
     }
 }

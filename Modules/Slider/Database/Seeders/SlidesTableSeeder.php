@@ -3,9 +3,8 @@
 namespace Modules\Slider\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 
-class SliderDatabaseSeeder extends Seeder
+class SlidesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +13,6 @@ class SliderDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
-
-        // $this->call("OthersTableSeeder");
+        //
     }
 }
